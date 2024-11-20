@@ -1,0 +1,263 @@
+/*
+Theme Name: My Theme
+Theme URI: https://yourwebsite.com/simple-theme
+Author: Nikolay
+Author URI: https://yourwebsite.com
+Description: A simple WordPress theme for beginners.
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: my-theme
+*/
+
+/* ========================
+   1. GENERAL STYLES
+   ======================== */
+
+   * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
+/* ========================
+   2. HEADER STYLES
+   ======================== */
+
+header {
+    background-color: #b9f8bb;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #f84646;
+}
+
+/* ========================
+   3. NAVIGATION MENU
+   ======================== */
+
+.main-menu {
+    list-style: none;
+    display: flex;
+    justify-content: flex-start;
+    padding: 0;
+    margin: 0;
+}
+
+.main-menu li {
+    margin-right: 20px;
+}
+
+.main-menu a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+.main-menu a:hover {
+    color: #014564;
+}
+
+/* ========================
+   4. LAYOUT CONTAINERS
+   ======================== */
+
+.container {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+}
+
+.content {
+    background-color: #abd5f7;
+    flex: 1;
+    padding: 20px;
+    color: #333;
+}
+
+.content h2 {
+    width: 100%;
+}
+
+.sidebar {
+    background-color: #fdae95;
+    padding: 20px;
+}
+
+/* ========================
+   5. FOOTER STYLES
+   ======================== */
+
+footer {
+    background-color: #333;
+    color: white !important;
+    text-align: center;
+    padding: 10px 0;
+}
+
+/* ========================
+   6. TYPOGRAPHY
+   ======================== */
+
+.custom-h1 {
+    color: rgb(35, 35, 124);
+}
+
+.custom-hh1 {
+    color: rgb(2, 150, 19);
+}
+
+/* ========================
+   7. CUSTOM POST STYLES
+   ======================== */
+
+.custom-posts-section {
+    margin-top: 20px;
+}
+
+.custom-posts-section li {
+    padding: 5px 0;
+}
+
+.myposts a[href*="author_name"] {
+    margin-top: 2rem;
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+    color: rgb(112, 11, 11);
+    font-weight: bold;
+    display: inline-block;
+}
+
+/* ========================
+   8. PAGINATION
+   ======================== */
+
+.pagination {
+    display: flex;
+    justify-content: left;
+    margin: 10px 0;
+    list-style: none;
+    padding: 0;
+}
+
+.pagination a,
+.pagination span {
+    margin: 0 5px;
+    padding: 5px 10px;
+    text-decoration: none;
+    border: 1px solid #ddd;
+    color: #0073aa;
+}
+
+.pagination a:hover {
+    background-color: #0073aa;
+    color: white;
+}
+
+/* ========================
+   9. DATE ARCHIVE FORM
+   ======================== */
+
+.date-archive-form {
+    display: inline-block;
+    padding: 20px 10px;
+    font-size: 1.0rem;
+    border: 1px solid black;
+    width: auto;
+    box-sizing: border-box;
+    margin-top: 20px;
+}
+
+.date-archive-form form div {
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+.date-archive-form label {
+    display: inline-block;
+    min-width: 70px;
+    text-align: left;
+    margin-right: 10px;
+}
+
+.date-archive-form input,
+.date-archive-form select {
+    display: inline-block;
+    width: calc(100% - 90px);
+    padding: 3px;
+    box-sizing: border-box;
+}
+
+.date-archive-form button {
+    display: block;
+    padding: 5px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.date-archive-form button:hover {
+    background-color: #0056b3;
+}
+
+.date-archive h1 {
+    margin-bottom: 1rem;
+}
+
+.date-archive-list {
+    padding: 10px 0;
+    list-style: none;
+}
+
+.date-archive-list li {
+    padding: 5px 0;
+    font-size: 1.5rem;
+}
+
+/* ========================
+   10. BLOCKS AND ELEMENTS
+   ======================== */
+
+.wp-block-heading {
+    padding-bottom: 20px;
+}
+
+.post-content,
+.post-meta {
+    max-width: 70%;
+}
+
+.wp-element-button {
+    cursor: pointer;
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+#thepost-ajax-filter {
+  font-weight: bold;
+  margin: 1rem 0;
+}
+
+#thepost-ajax-filter option, select {
+  font-weight: bold;
+}
+  #thepost-results {
+  margin-top: 1rem;
+}
+
+

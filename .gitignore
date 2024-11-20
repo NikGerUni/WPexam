@@ -1,0 +1,17 @@
+# Ignore all files and folders
+*
+
+# Exclude .gitignore and README.md from ignore in the root folder
+!/.gitignore
+!/README.md
+
+# Exclude wp-content/themes/my-theme/ and its contents from ignore
+!wp-content/
+!wp-content/themes/
+!wp-content/themes/my-theme/
+!wp-content/themes/my-theme/**
+
+# Exclude wp-content/plugins/my-plugin/ and its contents from ignore
+!wp-content/plugins/
+!wp-content/plugins/my-plugin/
+!wp-content/plugins/my-plugin/**
