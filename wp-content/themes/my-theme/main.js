@@ -1,14 +1,12 @@
+function goToArchive() {
+    const year  = document.getElementById( 'year' ).value;
+    const month = document.getElementById( 'month' ).value;
 
-    function goToArchive() {
-        const year = document.getElementById('year').value;
-        const month = document.getElementById('month').value;
+    // Генерира URL с красива структура
+    const archiveUrl = ` / mik / ${year} / ${month} / `;
 
-        // Генерира URL с красива структура
-        const archiveUrl = `/mik/${year}/${month}/`;
+    // Пренасочване към новия URL
+    window.location.href = archiveUrl;
 
-        // Пренасочване към новия URL
-        window.location.href = archiveUrl;
-
-        return false; // Спира изпращането на стандартната GET заявка
-    }
-
+    return false; // Спира изпращането на стандартната GET заявка
+}

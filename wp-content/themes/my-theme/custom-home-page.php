@@ -18,22 +18,28 @@ Template Name: Custom Home Page
             'paged'          => $paged,
         );
 
-        $query = new WP_Query( $args );
+        $query      = new WP_Query( $args );
         $temp_query = $wp_query;
-        $wp_query = $query;
+        $wp_query   = $query;
 
         if ( $query->have_posts() ) :
-            while ( $query->have_posts() ) : $query->the_post(); ?>
+            while ( $query->have_posts() ) :
+                $query->the_post();
+                ?>
                 <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
                 <?php the_excerpt(); ?>
             <?php endwhile; ?>
 
             <!-- Pagination -->
-            <?php the_posts_pagination( array(
-                'mid_size'  => 2,
-                'prev_text' => __( '&laquo; Previous', 'my-theme' ),
-                'next_text' => __( 'Next &raquo;', 'my-theme' ),
-            ) ); ?>
+            <?php
+            the_posts_pagination(
+                array(
+					'mid_size'  => 2,
+					'prev_text' => __( '&laquo; Previous', 'my-theme' ),
+					'next_text' => __( 'Next &raquo;', 'my-theme' ),
+                )
+            );
+            ?>
 
         <?php else : ?>
             <p><?php esc_html_e( 'No posts found.', 'my-theme' ); ?></p>
@@ -46,7 +52,7 @@ Template Name: Custom Home Page
 
         <div class="ajax-filter">
             <h2>Custom Post's AJAX filter</h2>
-            <?php echo do_shortcode('[thepost_ajax_filter]'); ?>
+            <?php echo do_shortcode( '[thepost_ajax_filter]' ); ?>
         </div>
 
     </div>

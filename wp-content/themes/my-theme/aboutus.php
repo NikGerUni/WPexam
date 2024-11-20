@@ -53,7 +53,7 @@ Template Name: About Us
 
         <div class="custom-posts-section">
             <h2>ThePost's last three articles</h2>
-            <?php echo do_shortcode('[thepost_list count="3"]'); ?>
+            <?php echo do_shortcode( '[thepost_list count="3"]' ); ?>
          </div>
 
 

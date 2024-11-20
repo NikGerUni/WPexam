@@ -72,13 +72,13 @@ function register_thepost_taxonomy() {
         'show_in_menu'      => true,
         'show_in_rest'      => true, // Enable Gutenberg
         'show_admin_column' => true,
-        'rewrite'           => array('slug' => 'thepost-category'),
+        'rewrite'           => array( 'slug' => 'thepost-category' ),
     );
 
-    register_taxonomy('thepost_category', 'thepost', $args);
+    register_taxonomy( 'thepost_category', 'thepost', $args );
 }
 
-add_action('init', 'register_thepost_taxonomy');
+add_action( 'init', 'register_thepost_taxonomy' );
 
 
 // Добавяне на метабокс
@@ -94,54 +94,54 @@ function add_thepost_meta_box() {
 }
 
 // Callback за съдържанието на метабокса
-function render_thepost_meta_box($post) {
+function render_thepost_meta_box( $post ) {
     // Вземане на запазената стойност
-    $custom_value = get_post_meta($post->ID, '_thepost_custom_option', true);
+    $custom_value = get_post_meta( $post->ID, '_thepost_custom_option', true );
 
     // Nonce за защита
-    wp_nonce_field('thepost_meta_box_nonce', 'thepost_meta_box_nonce_field');
+    wp_nonce_field( 'thepost_meta_box_nonce', 'thepost_meta_box_nonce_field' );
 
     // HTML за метабокса
     echo '<label for="thepost_custom_option">Enter your custom value:</label>';
-    echo '<input type="text" id="thepost_custom_option" name="thepost_custom_option" value="' . esc_attr($custom_value) . '" style="width:100%;"/>';
+    echo '<input type="text" id="thepost_custom_option" name="thepost_custom_option" value="' . esc_attr( $custom_value ) . '" style="width:100%;"/>';
 }
 
 // Запазване на стойността на метабокса
-function save_thepost_meta_box($post_id) {
+function save_thepost_meta_box( $post_id ) {
     // Проверка за валидност
-    if (!isset($_POST['thepost_meta_box_nonce_field']) ||
-        !wp_verify_nonce($_POST['thepost_meta_box_nonce_field'], 'thepost_meta_box_nonce')) {
+    if ( ! isset( $_POST['thepost_meta_box_nonce_field'] ) ||
+        ! wp_verify_nonce( $_POST['thepost_meta_box_nonce_field'], 'thepost_meta_box_nonce' ) ) {
         return;
     }
 
     // Проверка за автозапис
-    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+    if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
         return;
     }
 
     // Проверка за права
-    if (!current_user_can('edit_post', $post_id)) {
+    if ( ! current_user_can( 'edit_post', $post_id ) ) {
         return;
     }
 
     // Запазване на стойността
-    if (isset($_POST['thepost_custom_option'])) {
-        update_post_meta($post_id, '_thepost_custom_option', sanitize_text_field($_POST['thepost_custom_option']));
+    if ( isset( $_POST['thepost_custom_option'] ) ) {
+        update_post_meta( $post_id, '_thepost_custom_option', sanitize_text_field( $_POST['thepost_custom_option'] ) );
     }
 }
 
 // Хук за регистриране на CPT, таксономия и метабокс
 
-add_action('add_meta_boxes', 'add_thepost_meta_box');
-add_action('save_post', 'save_thepost_meta_box');
+add_action( 'add_meta_boxes', 'add_thepost_meta_box' );
+add_action( 'save_post', 'save_thepost_meta_box' );
 
 // -------------------------------------------------------------------
 
 // Регистрация на настройките
 function thepost_register_settings() {
-    register_setting('thepost_settings_group', 'thepost_sidebar_option');
+    register_setting( 'thepost_settings_group', 'thepost_sidebar_option' );
 }
-add_action('admin_init', 'thepost_register_settings');
+add_action( 'admin_init', 'thepost_register_settings' );
 
 // Добавяне на административна страница
 function thepost_add_admin_page() {
@@ -155,7 +155,7 @@ function thepost_add_admin_page() {
         80                              // Позиция в менюто
     );
 }
-add_action('admin_menu', 'thepost_add_admin_page');
+add_action( 'admin_menu', 'thepost_add_admin_page' );
 
 // Callback функция за съдържанието на административната страница
 function thepost_settings_page() {
@@ -163,14 +163,14 @@ function thepost_settings_page() {
     <div class="wrap">
         <h1>ThePost Settings</h1>
         <form method="post" action="options.php">
-            <?php settings_fields('thepost_settings_group'); ?>
-            <?php do_settings_sections('thepost_settings_group'); ?>
+            <?php settings_fields( 'thepost_settings_group' ); ?>
+            <?php do_settings_sections( 'thepost_settings_group' ); ?>
             
             <table class="form-table">
                 <tr valign="top">
                     <th scope="row">Show Sidebar</th>
                     <td>
-                        <input type="checkbox" name="thepost_sidebar_option" value="1" <?php checked(1, get_option('thepost_sidebar_option'), true); ?> />
+                        <input type="checkbox" name="thepost_sidebar_option" value="1" <?php checked( 1, get_option( 'thepost_sidebar_option' ), true ); ?> />
                         <label for="thepost_sidebar_option">Check to display the sidebar</label>
                     </td>
                 </tr>
@@ -184,10 +184,10 @@ function thepost_settings_page() {
 
 // Добавяне на CSS за скриване на sidebar
 function thepost_toggle_sidebar_visibility() {
-    $show_sidebar = get_option('thepost_sidebar_option'); // Проверка на опцията
+    $show_sidebar = get_option( 'thepost_sidebar_option' ); // Проверка на опцията
 
     // Ако опцията е изключена, добавя CSS за скриване на sidebar
-    if (!$show_sidebar) {
+    if ( ! $show_sidebar ) {
         echo '<style>
             .sidebar {
                 display: none !important;
@@ -195,37 +195,43 @@ function thepost_toggle_sidebar_visibility() {
         </style>';
     }
 }
-add_action('wp_head', 'thepost_toggle_sidebar_visibility');
+add_action( 'wp_head', 'thepost_toggle_sidebar_visibility' );
 
 // Филтър за манипулиране на заглавието
-function thepost_custom_title($title, $post_id) {
+function thepost_custom_title( $title, $post_id ) {
     // Проверка дали е "thepost" и дали не сме в администраторския панел
-    if (get_post_type($post_id) === 'thepost' && !is_admin()) {
+    if ( get_post_type( $post_id ) === 'thepost' && ! is_admin() ) {
         $custom_prefix = 'ThePost: ';
         return $custom_prefix . $title;
     }
 
     return $title;
 }
-add_filter('the_title', 'thepost_custom_title', 10, 2);
+add_filter( 'the_title', 'thepost_custom_title', 10, 2 );
 
 // Регистрация на кратък код
-function thepost_shortcode($atts) {
+function thepost_shortcode( $atts ) {
     // Задаване на атрибути по подразбиране
-    $atts = shortcode_atts(array(
-        'count' => 5, // Брой публикации по подразбиране
-    ), $atts, 'thepost_list');
+    $atts = shortcode_atts(
+        array(
+			'count' => 5, // Брой публикации по подразбиране
+        ),
+        $atts,
+        'thepost_list'
+    );
 
     // WP_Query за извличане на публикации от Custom Post Type
-    $query = new WP_Query(array(
-        'post_type'      => 'thepost',
-        'posts_per_page' => intval($atts['count']),
-    ));
+    $query = new WP_Query(
+        array(
+			'post_type'      => 'thepost',
+			'posts_per_page' => intval( $atts['count'] ),
+        )
+    );
 
     // Генериране на HTML
-    if ($query->have_posts()) {
+    if ( $query->have_posts() ) {
         $output = '<ul class="thepost-list">';
-        while ($query->have_posts()) {
+        while ( $query->have_posts() ) {
             $query->the_post();
             $output .= '<li><a href="' . get_permalink() . '">' . get_the_title() . '</a></li>';
         }
@@ -238,15 +244,17 @@ function thepost_shortcode($atts) {
 
     return $output;
 }
-add_shortcode('thepost_list', 'thepost_shortcode');
+add_shortcode( 'thepost_list', 'thepost_shortcode' );
 
 // Кратък код - създава падащо меню за категориите и да зареди публикациите с AJAX:
 function thepost_ajax_filter_shortcode() {
     // Вземане на всички категории за таксономията "thepost_category"
-    $categories = get_terms(array(
-        'taxonomy' => 'thepost_category',
-        'hide_empty' => true,
-    ));
+    $categories = get_terms(
+        array(
+			'taxonomy'   => 'thepost_category',
+			'hide_empty' => true,
+        )
+    );
 
     ob_start();
     ?>
@@ -254,9 +262,9 @@ function thepost_ajax_filter_shortcode() {
         <label for="thepost-category">Filter by Category:</label>
         <select id="thepost-category">
             <option value="all">All Categories</option>
-            <?php foreach ($categories as $category): ?>
-                <option value="<?php echo esc_attr($category->slug); ?>">
-                    <?php echo esc_html($category->name); ?>
+            <?php foreach ( $categories as $category ) : ?>
+                <option value="<?php echo esc_attr( $category->slug ); ?>">
+                    <?php echo esc_html( $category->name ); ?>
                 </option>
             <?php endforeach; ?>
         </select>
@@ -267,20 +275,24 @@ function thepost_ajax_filter_shortcode() {
     <?php
     return ob_get_clean();
 }
-add_shortcode('thepost_ajax_filter', 'thepost_ajax_filter_shortcode');
+add_shortcode( 'thepost_ajax_filter', 'thepost_ajax_filter_shortcode' );
 
 
 // Обработва избора в падащото меню и изпраща заявката към WordPress:
 function thepost_enqueue_scripts() {
     // Регистрация на JavaScript файл
-    wp_enqueue_script('thepost-ajax-script', plugins_url('thepost-ajax.js', __FILE__), array('jquery'), null, true);
+    wp_enqueue_script( 'thepost-ajax-script', plugins_url( 'thepost-ajax.js', __FILE__ ), array( 'jquery' ), null, true );
 
     // Локализиране на AJAX URL
-    wp_localize_script('thepost-ajax-script', 'thepost_ajax', array(
-        'ajax_url' => admin_url('admin-ajax.php'),
-    ));
+    wp_localize_script(
+        'thepost-ajax-script',
+        'thepost_ajax',
+        array(
+			'ajax_url' => admin_url( 'admin-ajax.php' ),
+        )
+    );
 }
-add_action('wp_enqueue_scripts', 'thepost_enqueue_scripts');
+add_action( 'wp_enqueue_scripts', 'thepost_enqueue_scripts' );
 
 //Обработва AJAX заявката и връща публикациите:
 
@@ -288,24 +300,24 @@ function thepost_ajax_filter() {
     $category = $_POST['category'];
 
     $args = array(
-        'post_type' => 'thepost',
+        'post_type'      => 'thepost',
         'posts_per_page' => -1,
     );
 
-    if ($category !== 'all') {
+    if ( $category !== 'all' ) {
         $args['tax_query'] = array(
             array(
                 'taxonomy' => 'thepost_category',
-                'field' => 'slug',
-                'terms' => $category,
+                'field'    => 'slug',
+                'terms'    => $category,
             ),
         );
     }
 
-    $query = new WP_Query($args);
+    $query = new WP_Query( $args );
 
-    if ($query->have_posts()) {
-        while ($query->have_posts()) {
+    if ( $query->have_posts() ) {
+        while ( $query->have_posts() ) {
             $query->the_post();
             echo '<div class="thepost-item">';
             echo '<h2><a href="' . get_permalink() . '">' . get_the_title() . '</a></h2>';
@@ -317,8 +329,8 @@ function thepost_ajax_filter() {
 
     wp_die();
 }
-add_action('wp_ajax_thepost_filter', 'thepost_ajax_filter');
-add_action('wp_ajax_nopriv_thepost_filter', 'thepost_ajax_filter');
+add_action( 'wp_ajax_thepost_filter', 'thepost_ajax_filter' );
+add_action( 'wp_ajax_nopriv_thepost_filter', 'thepost_ajax_filter' );
 
 
 
