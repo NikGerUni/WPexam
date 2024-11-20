@@ -83,10 +83,10 @@ header .logo {
 }
 
 .content {
-    background-color: #abd5f7;
+/*   background-color: #abd5f7; */
     flex: 1;
     padding: 20px;
-    color: #333;
+/*  color: #333; */
 }
 
 .content h2 {

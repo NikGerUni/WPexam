@@ -13,7 +13,7 @@ add_action( 'after_setup_theme', 'simple_theme_setup' );
 // Зареждане на стилове и скриптове
 function simple_theme_enqueue_styles() {
     wp_enqueue_style( 'main-style', get_stylesheet_uri() );
-    wp_enqueue_style( 'custom-style', get_template_directory_uri() . '/custom.css', array( 'main-style' ), null );
+    wp_enqueue_style( 'custom-style', get_template_directory_uri() . '/css/compiled-style.css', array( 'main-style' ), null );
     wp_enqueue_script( 'main-script', get_template_directory_uri() . '/main.js', array(), null, true );
 }
 add_action( 'wp_enqueue_scripts', 'simple_theme_enqueue_styles' );

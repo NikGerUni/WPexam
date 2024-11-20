@@ -1,0 +1,13 @@
+body header {
+  font-family: "Arial", sans-serif;
+}
+body footer {
+  font-family: "Times New Roman", serif;
+}
+
+.content {
+  background-color: #abd5f7;
+  color: #333;
+}
+
+/*# sourceMappingURL=compiled-style.css.map */

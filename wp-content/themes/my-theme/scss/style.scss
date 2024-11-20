@@ -1,0 +1,20 @@
+$header-font: 'Arial', sans-serif;
+$footer-font: 'Times New Roman', serif;
+
+body {
+    header {
+        font-family: $header-font;
+           }
+    footer {
+        font-family: $footer-font;
+           }
+    }
+
+@mixin content-colors ($bg-color, $text-color) {
+    background-color: $bg-color;
+    color: $text-color; 
+    }
+
+.content {
+    @include content-colors(#abd5f7,#333);
+}    
