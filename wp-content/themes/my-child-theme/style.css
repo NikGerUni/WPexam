@@ -1,0 +1,16 @@
+/*
+Theme Name: My Child Theme
+Template: my-theme
+Author: nikosoft
+Description: A simple child theme for learning purposes.
+Version: 1.0
+Text Domain: my-child-theme
+*/
+
+/* Import styles from the parent theme */
+@import url("../my-theme/style.css");
+
+/* Add your custom styles below */
+header {
+    background-color: #f8eab9;
+}

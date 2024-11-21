@@ -21,7 +21,7 @@
 
     <!-- Date Archive Form -->
     <div class="date-archive-form">
-        <form action="<?php echo esc_url( home_url( '/' ) ); ?>" method="get" onsubmit="return goToArchive();">
+        <form action="<?php echo   home_url( '/' )  ; ?>" method="get" onsubmit="return goToArchive();">
             <div>
                 <label for="year"><?php esc_html_e( 'Year:', 'textdomain' ); ?></label>
                 <input 
