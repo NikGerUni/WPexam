@@ -44,3 +44,18 @@ add_filter(
         return $redirect_url;
     }
 );
+
+function handle_contact_form() {
+    
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $name = sanitize_text_field($_POST['name']);
+        $email = sanitize_email($_POST['email']);
+        $message = sanitize_textarea_field($_POST['message']);
+        
+        wp_redirect(home_url('/'));
+        exit;
+    }
+}
+add_action('admin_post_handle_contact_form', 'handle_contact_form');
+add_action('admin_post_nopriv_handle_contact_form', 'handle_contact_form');
+
