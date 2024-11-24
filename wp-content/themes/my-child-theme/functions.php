@@ -9,13 +9,14 @@ class MyChildTheme {
         // Enqueue parent theme styles
         wp_enqueue_style('parent-style', get_template_directory_uri() . '/style.css');
 
-        // Enqueue child theme styles
-        wp_enqueue_style('child-style', get_stylesheet_uri(), ['parent-style'], null);
-
         // Enqueue compiled-style.css if used in parent theme
         wp_enqueue_style('compiled-style', get_template_directory_uri() . '/css/compiled-style.css', ['parent-style'], null);
+
+        // Enqueue child theme styles
+        wp_enqueue_style('child-style', get_stylesheet_uri(), ['parent-style'], null);
+      
     }
-}
+}    
 
 // Initialize the class
 new MyChildTheme();

@@ -308,3 +308,9 @@ footer {
     resize: vertical;
 }
 
+.ajax-filter {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    display: inline-block;
+    border-top: solid 2px #333; 
+}

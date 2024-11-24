@@ -6,26 +6,25 @@ Version: 1.0
 Author: Nikosoft
 */
 
-
 function create_custom_post_type() {
     $labels = array(
-        'name'                  => __( 'ThePost', 'mytheme' ),
-        'singular_name'         => __( 'ThePost', 'mytheme' ),
-        'menu_name'             => __( 'ThePost', 'mytheme' ),
-        'name_admin_bar'        => __( 'ThePost', 'mytheme' ),
-        'add_new'               => __( 'Add New', 'mytheme' ),
-        'add_new_item'          => __( 'Add New ThePost', 'mytheme' ),
-        'new_item'              => __( 'New ThePost', 'mytheme' ),
-        'edit_item'             => __( 'Edit ThePost', 'mytheme' ),
-        'view_item'             => __( 'View ThePost', 'mytheme' ),
-        'all_items'             => __( 'All ThePost', 'mytheme' ),
-        'search_items'          => __( 'Search ThePost', 'mytheme' ),
-        'not_found'             => __( 'No thepost found.', 'mytheme' ),
-        'not_found_in_trash'    => __( 'No thepost found in Trash.', 'mytheme' ),
-        'featured_image'        => __( 'ThePost Image', 'mytheme' ),
-        'set_featured_image'    => __( 'Set thepost image', 'mytheme' ),
-        'remove_featured_image' => __( 'Remove thepost image', 'mytheme' ),
-        'use_featured_image'    => __( 'Use as thepost image', 'mytheme' ),
+        'name'                  => __( 'ThePost', 'my-theme' ),
+        'singular_name'         => __( 'ThePost', 'my-theme' ),
+        'menu_name'             => __( 'ThePost', 'my-theme' ),
+        'name_admin_bar'        => __( 'ThePost', 'my-theme' ),
+        'add_new'               => __( 'Add New', 'my-theme' ),
+        'add_new_item'          => __( 'Add New ThePost', 'my-theme' ),
+        'new_item'              => __( 'New ThePost', 'my-theme' ),
+        'edit_item'             => __( 'Edit ThePost', 'my-theme' ),
+        'view_item'             => __( 'View ThePost', 'my-theme' ),
+        'all_items'             => __( 'All ThePost', 'my-theme' ),
+        'search_items'          => __( 'Search ThePost', 'my-theme' ),
+        'not_found'             => __( 'No thepost found.', 'my-theme' ),
+        'not_found_in_trash'    => __( 'No thepost found in Trash.', 'my-theme' ),
+        'featured_image'        => __( 'ThePost Image', 'my-theme' ),
+        'set_featured_image'    => __( 'Set thepost image', 'my-theme' ),
+        'remove_featured_image' => __( 'Remove thepost image', 'my-theme' ),
+        'use_featured_image'    => __( 'Use as thepost image', 'my-theme' ),
     );
 
     $args = array(
