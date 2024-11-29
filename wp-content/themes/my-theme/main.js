@@ -2,13 +2,11 @@ function goToArchive() {
     const year  = document.getElementById( 'year' ).value;
     const month = document.getElementById( 'month' ).value;
 
-    const fullPath = window.location.pathname; 
-    const basePath = `/${fullPath.split('/')[1]}`; 
-    return basePath; 
-    
-    const archiveUrl = `${basePath}/${year}/${month}/`;
+    // Генерира URL с красива структура
+    const archiveUrl = `/mik/${year}/${month}/`;
 
+    // Пренасочване към новия URL
     window.location.href = archiveUrl;
 
-    return false; 
+    return false; // Спира изпращането на стандартната GET заявка
 }
